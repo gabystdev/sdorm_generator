@@ -1,0 +1,38 @@
+name: supabase_dart_generators
+description: Code generators for the Supabase Dart Client ORM
+version: 0.1.0
+repository: https://github.com/gatsapp/GatsApp-Supabase
+publish_to: none
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  build: ^2.3.1
+  source_gen: ^1.2.7
+  analyzer: ^5.10.0
+  supabase_dart_client:
+    git:
+      url: https://github.com/gabystdev/sdorm_annotations 
+dev_dependencies:
+  build_runner: ^2.3.3
+  build_test: ^2.1.7
+  lints: ^2.0.1
+  test: ^1.24.1
+
+# Configure the builders
+builders:
+  dao_builder:
+    import: "package:supabase_dart_generators/builder.dart"
+    builder_factories: ["daoBuilder"]
+    build_extensions: {".dart": [".dao_builder.g.part"]}
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
+  keypath_builder:
+    import: "package:supabase_dart_generators/builder.dart" 
+    builder_factories: ["keypathBuilder"]
+    build_extensions: {".dart": [".keypath_builder.g.part"]}
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]

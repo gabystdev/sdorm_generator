@@ -1,0 +1,9 @@
+# Build configuration for supabase_dart_generators
+builders:
+  dao_builder:
+    import: "package:supabase_dart_generators/builder.dart"
+    builder_factories: ["daoBuilder"]
+    build_extensions: {".dart": [".dao_builder.g.part"]}
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]

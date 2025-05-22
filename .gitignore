@@ -1,0 +1,12 @@
+# Dart/Flutter specific
+.dart_tool/
+.packages
+build/
+pubspec.lock
+.pub-cache/
+.pub/
+
+# Environment files
+.env
+.env.test
+*.env
